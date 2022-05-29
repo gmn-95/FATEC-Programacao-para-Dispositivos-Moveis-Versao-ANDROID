@@ -1,2 +1,2 @@
-# FATEC-Programacao-para-Dispositivos-Moveis-Versao-ANDROID
-Projeto da faculdade: Agendamento - VERSÂO ANDROID
+# FATEC-Programacao-para-Dispositivos-Moveis-Versão-ANDROID
+Projeto da faculdade: Agendamento - VERSÃO ANDROID
