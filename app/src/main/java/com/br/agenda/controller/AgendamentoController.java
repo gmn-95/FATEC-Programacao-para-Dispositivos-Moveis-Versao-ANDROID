@@ -30,16 +30,4 @@ public class AgendamentoController {
         return agendamentoList;
     }
 
-    public Agendamento buscar(Agendamento agendamento) throws SQLException {
-        return agendamentoDAO.queryForId(10);
-    }
-
-    public void deletarPorId() throws SQLException {
-        for(int i = 2; i < 11; i++){
-            agendamentoDAO.deleteById(i);
-        }
-
-    }
-
-
 }

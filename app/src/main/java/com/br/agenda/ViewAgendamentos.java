@@ -1,9 +1,12 @@
 package com.br.agenda;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.br.agenda.controller.AgendamentoController;
 import com.br.agenda.model.bean.Agendamento;
@@ -20,10 +23,17 @@ public class ViewAgendamentos extends AppCompatActivity {
     private TextView txtDescricao;
     private TextView txtContato;
 
+    private RecyclerView recyclerView;
+    private AgendamentoAdapter agendamentoAdapter;
+    private List<Agendamento> agendamentoList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agendamentos);
+
+        recyclerView = findViewById(R.id.recycler_view_main);
+
 
         try {
             Usuario usuario = getIntent().getParcelableExtra("user");
@@ -33,24 +43,13 @@ public class ViewAgendamentos extends AppCompatActivity {
 
             List<Agendamento> agendamentoList = agendamentoController.listarAgendamentos(agendamento);
 
-            txtConteudo = (TextView) findViewById(R.id.textDescricao);
-            txtData = (TextView) findViewById(R.id.textData);
-            txtHora = (TextView) findViewById(R.id.textHora);
-            txtDescricao = (TextView) findViewById(R.id.textConteudo);
-            txtContato = (TextView) findViewById(R.id.textContato);
+            agendamentoAdapter = new AgendamentoAdapter(ViewAgendamentos.this, agendamentoList);
 
-            SimpleDateFormat hora = new SimpleDateFormat("HH:mm");
-            SimpleDateFormat data = new SimpleDateFormat("dd-mm-yyyy");
-            System.out.println(agendamentoList.get(0));
-            if(agendamentoList != null){
-                for (Agendamento age : agendamentoList){
-                    txtConteudo.setText(age.getConteudo());
-                    txtHora.setText(hora.format(age.getHora_agendada()));
-                    txtData.setText(data.format(age.getData_agendada()));
-                    txtDescricao.setText(age.getDescricao());
-                    txtContato.setText(age.getContato().getNome());
-                }
-            }
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ViewAgendamentos.this,
+                    LinearLayoutManager.VERTICAL, false);
+
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(agendamentoAdapter);
 
         } catch (Exception e) {
             e.printStackTrace();
