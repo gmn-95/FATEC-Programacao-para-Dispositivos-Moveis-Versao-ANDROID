@@ -29,6 +29,10 @@ public class Usuario implements Serializable, Parcelable {
     public Usuario() {
     }
 
+    public Usuario(Integer id) {
+        this.id = id;
+    }
+
     public Usuario(Integer id, String nome, String login, String senha) {
         this.id = id;
         this.nome = nome;
