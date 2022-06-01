@@ -24,12 +24,13 @@ public class ViewAgendamentoCriar extends AppCompatActivity {
             @Override
             public void handleOnBackPressed() {
                 Intent intent = new Intent(ViewAgendamentoCriar.this, ViewAgendamentos.class);
-                startActivityForResult(intent, 0);
-
+                setResult(0, intent);
+                finish();
             }
         };
         getOnBackPressedDispatcher().addCallback(this, callback);
 
+        //metodo para salvar - coloque resultCOde = 1
 
     }
 }
