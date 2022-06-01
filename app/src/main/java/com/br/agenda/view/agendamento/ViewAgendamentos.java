@@ -1,18 +1,16 @@
-package com.br.agenda;
+package com.br.agenda.view.agendamento;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toolbar;
 
+import com.br.agenda.R;
 import com.br.agenda.controller.AgendamentoController;
 import com.br.agenda.model.bean.Agendamento;
 import com.br.agenda.model.bean.Usuario;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class ViewAgendamentos extends AppCompatActivity {
@@ -36,12 +34,11 @@ public class ViewAgendamentos extends AppCompatActivity {
 
             agendamentoList = agendamentoController.listarAgendamentos(agendamento);
 
-            for(Agendamento agendamento1 : agendamentoList){
-                System.out.println(agendamento1);
-            }
-
             agendamentoAdapter = new AgendamentoAdapter(ViewAgendamentos.this, agendamentoList);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ViewAgendamentos.this,
+                    LinearLayoutManager.VERTICAL, false);
 
+            recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(agendamentoAdapter);
 
         } catch (Exception e) {
@@ -49,6 +46,7 @@ public class ViewAgendamentos extends AppCompatActivity {
         }
 
     }
+    
 
 
 }

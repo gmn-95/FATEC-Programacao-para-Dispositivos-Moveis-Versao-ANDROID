@@ -1,10 +1,12 @@
-package com.br.agenda;
+package com.br.agenda.view.agendamento;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.br.agenda.R;
 
 
 public class AgendamentoViewHolder extends RecyclerView.ViewHolder {
