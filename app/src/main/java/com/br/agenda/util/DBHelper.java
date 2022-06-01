@@ -4,18 +4,16 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.br.agenda.model.bean.Agendamento;
-import com.br.agenda.model.bean.Contato;
 import com.br.agenda.model.bean.Usuario;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
-import java.io.Serializable;
 import java.sql.SQLException;
 
 public class DBHelper extends OrmLiteSqliteOpenHelper {
 
-    private static final int serialVersionUID = 2;
+    private static final int serialVersionUID = 3;
     private static final String databaseName = "agenda.db";
 
 
@@ -27,7 +25,6 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
             TableUtils.createTable(connectionSource, Usuario.class);
-            TableUtils.createTable(connectionSource, Contato.class);
             TableUtils.createTable(connectionSource, Agendamento.class);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -38,7 +35,6 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
             TableUtils.dropTable(connectionSource, Usuario.class, true);
-            TableUtils.dropTable(connectionSource, Contato.class, true);
             TableUtils.dropTable(connectionSource, Agendamento.class, true);
 
             onCreate(database, connectionSource);

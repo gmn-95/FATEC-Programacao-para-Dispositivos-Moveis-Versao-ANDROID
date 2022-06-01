@@ -24,6 +24,5 @@ public class AgendamentoViewHolder extends RecyclerView.ViewHolder {
         txtHora = itemView.findViewById(R.id.textHora);
         txtData = itemView.findViewById(R.id.textData);
         txtDescricao = itemView.findViewById(R.id.textDescricao);
-        txtContato = itemView.findViewById(R.id.textContato);
     }
 }

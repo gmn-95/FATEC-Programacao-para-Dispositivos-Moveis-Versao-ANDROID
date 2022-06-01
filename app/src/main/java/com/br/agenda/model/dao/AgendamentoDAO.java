@@ -1,7 +1,6 @@
 package com.br.agenda.model.dao;
 
 import com.br.agenda.model.bean.Agendamento;
-import com.br.agenda.model.bean.Contato;
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.support.ConnectionSource;
 

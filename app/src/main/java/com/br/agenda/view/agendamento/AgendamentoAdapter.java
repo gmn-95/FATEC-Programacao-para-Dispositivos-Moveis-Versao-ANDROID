@@ -19,6 +19,10 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoViewHold
     private Context context;
     private List<Agendamento> agendamentoList;
 
+    public AgendamentoAdapter(List<Agendamento> agendamentoList) {
+        this.agendamentoList = agendamentoList;
+    }
+
     public AgendamentoAdapter(Context context, List<Agendamento> agendamentoList) {
         this.context = context;
         this.agendamentoList = agendamentoList;
@@ -33,13 +37,13 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoViewHold
         return agendamentoViewHolder;
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull AgendamentoViewHolder holder, int position) {
         SimpleDateFormat hora = new SimpleDateFormat("HH:mm");
         SimpleDateFormat data = new SimpleDateFormat("dd-mm-yyyy");
 
         Agendamento agendamento = agendamentoList.get(position);
-        holder.txtContato.setText(agendamento.getContato().getNome());
         holder.txtDescricao.setText(agendamento.getDescricao());
         holder.txtData.setText(data.format(agendamento.getData_agendada()));
         holder.txtHora.setText(hora.format(agendamento.getHora_agendada()));

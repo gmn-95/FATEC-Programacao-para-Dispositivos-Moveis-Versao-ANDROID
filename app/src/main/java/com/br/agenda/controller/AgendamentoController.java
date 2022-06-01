@@ -1,13 +1,9 @@
 package com.br.agenda.controller;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.br.agenda.model.bean.Agendamento;
-import com.br.agenda.model.bean.Contato;
-import com.br.agenda.model.bean.Usuario;
 import com.br.agenda.model.dao.AgendamentoDAO;
-import com.br.agenda.model.dao.UsuarioDAO;
 import com.br.agenda.util.DBHelper;
 
 import java.sql.SQLException;

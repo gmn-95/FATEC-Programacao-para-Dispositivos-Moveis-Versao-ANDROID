@@ -18,9 +18,6 @@ public class Agendamento implements Serializable {
     @DatabaseField(generatedId = true, columnName = "idAgendamento")
     private Integer id;
 
-    @DatabaseField(foreign = true, foreignColumnName = "idContato", canBeNull = false)
-    private Contato contato;
-
     @DatabaseField(foreign = true, foreignColumnName = "idUsuario", canBeNull = false)
     private Usuario usuario;
 
@@ -39,13 +36,9 @@ public class Agendamento implements Serializable {
     public Agendamento() {
     }
 
-    public Agendamento(Usuario usuario) {
-        this.usuario = usuario;
-    }
 
-    public Agendamento(Integer id, Contato contato, Usuario usuario, Date data_agendada, Date hora_agendada, String descricao, String conteudo) {
+    public Agendamento(Integer id, Usuario usuario, Date data_agendada, Date hora_agendada, String descricao, String conteudo) {
         this.id = id;
-        this.contato = contato;
         this.usuario = usuario;
         this.data_agendada = data_agendada;
         this.hora_agendada = hora_agendada;
@@ -53,8 +46,7 @@ public class Agendamento implements Serializable {
         this.conteudo = conteudo;
     }
 
-    public Agendamento(Contato contato, Usuario usuario, Date data_agendada, Date hora_agendada, String descricao, String conteudo) {
-        this.contato = contato;
+    public Agendamento(Usuario usuario, Date data_agendada, Date hora_agendada, String descricao, String conteudo) {
         this.usuario = usuario;
         this.data_agendada = data_agendada;
         this.hora_agendada = hora_agendada;
@@ -62,8 +54,7 @@ public class Agendamento implements Serializable {
         this.conteudo = conteudo;
     }
 
-    public Agendamento(Contato contato, Usuario usuario) {
-        this.contato = contato;
+    public Agendamento(Usuario usuario) {
         this.usuario = usuario;
     }
 
@@ -73,14 +64,6 @@ public class Agendamento implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Contato getContato() {
-        return contato;
-    }
-
-    public void setContato(Contato contato) {
-        this.contato = contato;
     }
 
     public Usuario getUsuario() {
@@ -128,19 +111,18 @@ public class Agendamento implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Agendamento)) return false;
         Agendamento that = (Agendamento) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getContato(), that.getContato()) && Objects.equals(getUsuario(), that.getUsuario()) && Objects.equals(getData_agendada(), that.getData_agendada()) && Objects.equals(getHora_agendada(), that.getHora_agendada()) && Objects.equals(getDescricao(), that.getDescricao()) && Objects.equals(getConteudo(), that.getConteudo());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getUsuario(), that.getUsuario()) && Objects.equals(getData_agendada(), that.getData_agendada()) && Objects.equals(getHora_agendada(), that.getHora_agendada()) && Objects.equals(getDescricao(), that.getDescricao()) && Objects.equals(getConteudo(), that.getConteudo());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getContato(), getUsuario(), getData_agendada(), getHora_agendada(), getDescricao(), getConteudo());
+        return Objects.hash(getId(), getUsuario(), getData_agendada(), getHora_agendada(), getDescricao(), getConteudo());
     }
 
     @Override
     public String toString() {
         return "Agendamento{" +
                 "id=" + id +
-                ", contato=" + contato +
                 ", usuario=" + usuario +
                 ", data_agendada=" + data_agendada +
                 ", hora_agendada=" + hora_agendada +
