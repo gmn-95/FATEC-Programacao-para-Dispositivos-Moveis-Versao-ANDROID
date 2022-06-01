@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.View;
 
 import com.br.agenda.MainActivity;
 import com.br.agenda.R;
@@ -34,17 +36,13 @@ public class ViewAgendamentos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agendamentos);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.botaoAdd);
-        fab.setOnClickListener((view) ->{
-            Intent intent = new Intent(ViewAgendamentos.this, ViewAgendamentoCriar.class);
-            startActivity(intent);
-        });
+        usuario = getIntent().getParcelableExtra("user");
 
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
                 Intent intent = new Intent(ViewAgendamentos.this, MainActivity.class);
-                startActivity(intent);
+                setResult(0, intent);
                 finish();
             }
         };
@@ -57,12 +55,17 @@ public class ViewAgendamentos extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("requestCode + resultCode" + data);
 
-        if(requestCode == 1){
-            carregarAgendamentos();
-        }
+        carregarAgendamentos();
 
+    }
 
+    public void criar(View view){
+        Intent intent = new Intent(ViewAgendamentos.this, ViewAgendamentoCriar.class);
+        intent.putExtra("user", (Parcelable) usuario);
+        startActivity(intent);
+        finish();
     }
 
     private void carregarAgendamentos(){
