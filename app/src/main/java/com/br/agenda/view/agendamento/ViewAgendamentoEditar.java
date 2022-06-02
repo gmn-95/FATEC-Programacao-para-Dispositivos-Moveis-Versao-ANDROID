@@ -49,8 +49,8 @@ public class ViewAgendamentoEditar extends AppCompatActivity {
         agendamento = getIntent().getParcelableExtra("agendamento");
         String data = getIntent().getStringExtra("data");
         String hora = getIntent().getStringExtra("hora");
-
-        System.out.println(agendamento);
+        agendamento.setData_agendada(data);
+        agendamento.setHora_agendada(hora);
 
         txtData = findViewById(R.id.inputEditDate);
         txtHora = findViewById(R.id.inputEditHora);
@@ -118,7 +118,7 @@ public class ViewAgendamentoEditar extends AppCompatActivity {
             agendamento.setHora_agendada(txtHora.getText().toString());
 
             agendamentoController = new AgendamentoController(ViewAgendamentoEditar.this);
-            agendamentoController.inserir(agendamento);
+            agendamentoController.atualizar(agendamento);
 
             Intent intent = new Intent(ViewAgendamentoEditar.this, ViewAgendamentos.class);
             intent.putExtra("user", (Parcelable) agendamento.getUsuario());
