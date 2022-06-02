@@ -9,12 +9,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.br.agenda.controller.AgendamentoController;
 import com.br.agenda.controller.UsuarioController;
+import com.br.agenda.model.bean.Agendamento;
 import com.br.agenda.model.bean.Usuario;
+import com.br.agenda.util.PovoaBanco;
 import com.br.agenda.view.agendamento.ViewAgendamentos;
 import com.br.agenda.view.usuario.ViewUsuarioCadastrar;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,8 +30,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-/*
-        try {
+
+
+
+
+        /*try {
             PovoaBanco.criarUsuario(MainActivity.this);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -66,8 +74,6 @@ public class MainActivity extends AppCompatActivity {
                 usuario = new Usuario(login.getText().toString(), senha.getText().toString());
                 UsuarioController usuarioController = new UsuarioController(MainActivity.this);
                 usuario = usuarioController.validaLogin(usuario);
-
-                System.out.println(usuario);
 
                 if(usuario != null){
                     Intent intent = new Intent(MainActivity.this, ViewAgendamentos.class);

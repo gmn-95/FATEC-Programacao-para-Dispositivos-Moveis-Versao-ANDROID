@@ -12,7 +12,7 @@ import java.util.Objects;
 @DatabaseTable(tableName="usuario")
 public class Usuario implements Serializable, Parcelable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 3L;
 
     @DatabaseField(generatedId = true, columnName = "idUsuario")
     private Integer id;

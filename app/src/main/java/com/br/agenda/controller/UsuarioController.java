@@ -24,8 +24,17 @@ public class UsuarioController {
         usuarioDAO.create(usuario);
     }
 
-    public void excluir(Integer id) throws SQLException{
+    public void excluirPorId(Integer id) throws SQLException{
         usuarioDAO.deleteById(id);
+    }
+
+    public void excluir(Usuario usuario) throws SQLException{
+        usuarioDAO.delete(usuario);
+    }
+
+    public void atualiza(Usuario usuario) throws SQLException{
+        usuarioDAO.update(usuario);
+        System.out.println(usuario);
     }
 
     public Usuario validaLogin(Usuario usuarioBucado) throws SQLException {

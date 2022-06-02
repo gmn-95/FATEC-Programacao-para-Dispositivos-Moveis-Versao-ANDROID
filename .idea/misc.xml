@@ -11,7 +11,8 @@
         <entry key="app/src/main/res/layout/activity_teste.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_view_agendamento_criar.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_view_agendamento_editar.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/activity_view_usuario_cadastrar.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_view_usuario_cadastrar.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_view_usuario_editar_conta.xml" value="0.22" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.1272644927536232" />
         <entry key="app/src/main/res/layout/item_agendamento.xml" value="0.19" />

@@ -17,6 +17,7 @@ import com.br.agenda.adpter_holder.AgendamentoAdapter;
 import com.br.agenda.controller.AgendamentoController;
 import com.br.agenda.model.bean.Agendamento;
 import com.br.agenda.model.bean.Usuario;
+import com.br.agenda.view.usuario.ViewUsuarioEditarConta;
 
 import java.util.List;
 
@@ -56,6 +57,7 @@ public class ViewAgendamentos extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
     }
 
     @Override
@@ -68,6 +70,14 @@ public class ViewAgendamentos extends AppCompatActivity {
         Intent intent = new Intent(ViewAgendamentos.this, ViewAgendamentoCriar.class);
         intent.putExtra("user", (Parcelable) usuario);
         startActivity(intent);
+        finish();
+    }
+
+    public void editarConta(View view){
+        Intent intent = new Intent(ViewAgendamentos.this, ViewUsuarioEditarConta.class);
+        intent.putExtra("user", (Parcelable) usuario);
+        startActivity(intent);
+        finish();
     }
 
     private void carregarAgendamentos(){

@@ -21,12 +21,14 @@ import java.util.Objects;
 @DatabaseTable(tableName = "agendamento")
 public class Agendamento implements Serializable, Parcelable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 3L;
 
     @DatabaseField(generatedId = true, columnName = "idAgendamento")
     private Integer id;
 
-    @DatabaseField(foreign = true, foreignColumnName = "idUsuario", canBeNull = false)
+    @DatabaseField(foreign = true, foreignColumnName = "idUsuario", canBeNull = false,
+        foreignAutoRefresh = true,
+            columnDefinition = "INTEGER REFERENCES usuario(idUsuario) on delete cascade on update cascade")
     private Usuario usuario;
 
     @DatabaseField(canBeNull = false)
@@ -136,7 +138,6 @@ public class Agendamento implements Serializable, Parcelable {
     public void setConteudo(String conteudo) {
         this.conteudo = conteudo;
     }
-
 
 
     @Override
