@@ -3,6 +3,7 @@ package com.br.agenda.view.agendamento;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,7 +49,7 @@ public class ViewAgendamentoCriar extends AppCompatActivity {
             public void handleOnBackPressed() {
                 Intent intent = new Intent(ViewAgendamentoCriar.this, ViewAgendamentos.class);
                 intent.putExtra("user", (Parcelable) usuario);
-                startActivity(intent);
+                setResult(0, intent);
                 finish();
             }
         };
@@ -103,9 +104,10 @@ public class ViewAgendamentoCriar extends AppCompatActivity {
             agendamentoController = new AgendamentoController(ViewAgendamentoCriar.this);
             agendamentoController.inserir(agendamento);
 
+
             Intent intent = new Intent(ViewAgendamentoCriar.this, ViewAgendamentos.class);
             intent.putExtra("user", (Parcelable) usuario);
-            startActivity(intent);
+            setResult(0, intent);
             finish();
         }
     }

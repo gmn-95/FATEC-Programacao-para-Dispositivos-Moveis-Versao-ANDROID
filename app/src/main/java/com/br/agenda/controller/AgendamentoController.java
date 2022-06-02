@@ -23,8 +23,8 @@ public class AgendamentoController {
         agendamentoDAO.create(agendamento);
     }
 
-    public void excluir(Integer id) throws SQLException{
-        agendamentoDAO.deleteById(id);
+    public void excluir(Agendamento agendamento) throws SQLException{
+        agendamentoDAO.delete(agendamento);
     }
 
     public void atualizar(Agendamento agendamento) throws SQLException {

@@ -1,5 +1,6 @@
 package com.br.agenda.view.agendamento;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.agenda.R;
+import com.br.agenda.controller.AgendamentoController;
 import com.br.agenda.model.bean.Agendamento;
+import com.br.agenda.util.DBHelper;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -37,7 +41,6 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoViewHold
         return agendamentoViewHolder;
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull AgendamentoViewHolder holder, int position) {
         SimpleDateFormat hora = new SimpleDateFormat("HH:mm");
@@ -48,6 +51,21 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoViewHold
         holder.txtData.setText(data.format(agendamento.getData_agendada()));
         holder.txtHora.setText(hora.format(agendamento.getHora_agendada()));
         holder.txtConteudo.setText(agendamento.getConteudo());
+
+        holder.btnExcluir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int newPosition = holder.getAdapterPosition();
+                try {
+                    new AgendamentoController(context).excluir(agendamentoList.get(newPosition));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                agendamentoList.remove(newPosition);
+                notifyItemRemoved(newPosition);
+            }
+        });
+
     }
 
     @Override

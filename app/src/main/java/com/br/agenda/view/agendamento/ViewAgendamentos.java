@@ -31,6 +31,9 @@ public class ViewAgendamentos extends AppCompatActivity {
     private AgendamentoController agendamentoController;
     private Usuario usuario;
 
+    public ViewAgendamentos() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,17 +58,18 @@ public class ViewAgendamentos extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("requestCode + resultCode" + data);
+    }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
         carregarAgendamentos();
-
     }
 
     public void criar(View view){
         Intent intent = new Intent(ViewAgendamentos.this, ViewAgendamentoCriar.class);
         intent.putExtra("user", (Parcelable) usuario);
         startActivity(intent);
-        finish();
     }
 
     private void carregarAgendamentos(){
@@ -91,7 +95,5 @@ public class ViewAgendamentos extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-
 
 }
