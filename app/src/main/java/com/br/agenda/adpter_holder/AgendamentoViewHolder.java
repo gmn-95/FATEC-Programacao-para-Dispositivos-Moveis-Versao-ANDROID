@@ -1,4 +1,4 @@
-package com.br.agenda.view.agendamento;
+package com.br.agenda.adpter_holder;
 
 import android.view.View;
 import android.widget.Button;

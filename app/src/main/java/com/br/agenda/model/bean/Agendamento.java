@@ -183,8 +183,5 @@ public class Agendamento implements Serializable, Parcelable {
         dest.writeString(conteudo);
         dest.writeString(data_agendada);
         dest.writeString(hora_agendada);
-
-
     }
-
 }

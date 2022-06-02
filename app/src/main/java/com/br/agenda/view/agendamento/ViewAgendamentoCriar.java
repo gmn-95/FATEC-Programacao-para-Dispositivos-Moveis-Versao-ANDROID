@@ -14,10 +14,10 @@ import com.br.agenda.R;
 import com.br.agenda.controller.AgendamentoController;
 import com.br.agenda.model.bean.Agendamento;
 import com.br.agenda.model.bean.Usuario;
+import com.br.agenda.util.MaskEditUtil;
 
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class ViewAgendamentoCriar extends AppCompatActivity {
 
@@ -52,8 +52,6 @@ public class ViewAgendamentoCriar extends AppCompatActivity {
             }
         };
         getOnBackPressedDispatcher().addCallback(this, callback);
-
-
     }
 
     @Override

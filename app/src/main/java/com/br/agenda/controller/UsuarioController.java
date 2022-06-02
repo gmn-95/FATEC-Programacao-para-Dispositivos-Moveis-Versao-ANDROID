@@ -30,10 +30,7 @@ public class UsuarioController {
 
     public Usuario validaLogin(Usuario usuarioBucado) throws SQLException {
         List<Usuario> usuarioList = usuarioDAO.queryForMatching(usuarioBucado);
-        if(usuarioList.isEmpty() || usuarioList == null){
-            return null;
-        }
-        return usuarioList.get(0);
+        return usuarioList.isEmpty() || usuarioList == null ? null : usuarioList.get(0);
     }
 
 

@@ -1,4 +1,4 @@
-package com.br.agenda.view.agendamento;
+package com.br.agenda.adpter_holder;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.br.agenda.R;
 import com.br.agenda.controller.AgendamentoController;
 import com.br.agenda.model.bean.Agendamento;
+import com.br.agenda.view.agendamento.ViewAgendamentoEditar;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -55,6 +56,25 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoViewHold
         holder.txtHora.setText(agendamento.getHora_agendada());
         holder.txtConteudo.setText(agendamento.getConteudo());
 
+        excluir(holder);
+        editar(holder);
+    }
+
+    private void editar(AgendamentoViewHolder holder){
+        holder.btnEditar.setOnClickListener(v -> {
+            int newPosition = holder.getAdapterPosition();
+
+            Intent it = new Intent(context, ViewAgendamentoEditar.class);
+            it.putExtra("agendamento", (Parcelable) agendamentoList.get(newPosition));
+            it.putExtra("data", agendamentoList.get(newPosition).getData_agendada());
+            it.putExtra("hora", agendamentoList.get(newPosition).getHora_agendada());
+
+            context.startActivity(it);
+            ((AppCompatActivity) context).finish();
+        });
+    }
+
+    private void excluir(AgendamentoViewHolder holder){
         holder.btnExcluir.setOnClickListener(v -> {
             int newPosition = holder.getAdapterPosition();
 
@@ -73,16 +93,6 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoViewHold
                             notifyItemRemoved(newPosition);
                         }
                     }).setNegativeButton("Não", null).show();
-        });
-
-        holder.btnEditar.setOnClickListener(v -> {
-            int newPosition = holder.getAdapterPosition();
-            Intent it = new Intent(context, ViewAgendamentoEditar.class);
-            it.putExtra("agendamento", (Parcelable) agendamentoList.get(newPosition));
-            it.putExtra("data", agendamentoList.get(newPosition).getData_agendada());
-            it.putExtra("hora", agendamentoList.get(newPosition).getHora_agendada());
-            context.startActivity(it);
-            ((AppCompatActivity) context).finish();
         });
     }
 

@@ -17,7 +17,6 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
     private static final int serialVersionUID = 5;
     private static final String databaseName = "agenda.db";
 
-
     public DBHelper(Context context) {
         super(context, databaseName, null, serialVersionUID);
     }

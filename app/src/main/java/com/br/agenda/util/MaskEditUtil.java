@@ -1,4 +1,4 @@
-package com.br.agenda.view.agendamento;
+package com.br.agenda.util;
 
 import android.text.Editable;
 import android.text.TextWatcher;

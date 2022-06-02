@@ -9,7 +9,6 @@ import com.br.agenda.model.bean.Usuario;
 
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class PovoaBanco {
 
