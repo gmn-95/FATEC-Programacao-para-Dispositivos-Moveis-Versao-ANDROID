@@ -21,10 +21,8 @@ public class PovoaBanco {
 
     public static void criarAgendamento(Context context) throws SQLException, ParseException {
         Usuario usuario = new Usuario(1);
-        SimpleDateFormat hora = new SimpleDateFormat("HH:mm");
-        SimpleDateFormat data = new SimpleDateFormat("dd-mm-yyyy");
 
-        Agendamento agendamento = new Agendamento(1, usuario, data.parse("10-06-2022"), hora.parse("19:00"),
+        Agendamento agendamento = new Agendamento(1, usuario, "10-06-2022", "19:00",
                 "Aniversário", "Meu aniversário");
 
         AgendamentoController agendamentoController = new AgendamentoController(context);

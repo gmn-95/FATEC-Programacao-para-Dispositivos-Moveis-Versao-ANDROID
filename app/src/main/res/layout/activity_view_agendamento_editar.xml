@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".view.agendamento.ViewAgendamentoCriar">
+    tools:context=".view.agendamento.ViewAgendamentoEditar">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -29,7 +28,7 @@
                 android:textStyle="bold"
                 android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 android:layout_gravity="center"
-                android:text="Criar Agendamento"
+                android:text="Editar Agendamento"
                 />
 
         </Toolbar>
@@ -113,8 +112,8 @@
         android:layout_height="45dp"
         android:layout_marginTop="200dp"
         android:backgroundTint="#673AB7"
-        android:onClick="criarAgendamento"
-        android:text="Criar"
+        android:onClick="editarAgendamento"
+        android:text="Editar"
         android:textColor="#F4F4F4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

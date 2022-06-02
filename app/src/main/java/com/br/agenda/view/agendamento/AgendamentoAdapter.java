@@ -2,11 +2,16 @@ package com.br.agenda.view.agendamento;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.agenda.R;
@@ -22,6 +27,7 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoViewHold
 
     private Context context;
     private List<Agendamento> agendamentoList;
+    private Agendamento agendamento;
 
     public AgendamentoAdapter(List<Agendamento> agendamentoList) {
         this.agendamentoList = agendamentoList;
@@ -41,30 +47,37 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoViewHold
         return agendamentoViewHolder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull AgendamentoViewHolder holder, int position) {
-        SimpleDateFormat hora = new SimpleDateFormat("HH:mm");
-        SimpleDateFormat data = new SimpleDateFormat("dd-mm-yyyy");
 
         Agendamento agendamento = agendamentoList.get(position);
         holder.txtDescricao.setText(agendamento.getDescricao());
-        holder.txtData.setText(data.format(agendamento.getData_agendada()));
-        holder.txtHora.setText(hora.format(agendamento.getHora_agendada()));
+        holder.txtData.setText(agendamento.getData_agendada());
+        holder.txtHora.setText(agendamento.getHora_agendada());
         holder.txtConteudo.setText(agendamento.getConteudo());
 
-        holder.btnExcluir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int newPosition = holder.getAdapterPosition();
-                try {
-                    new AgendamentoController(context).excluir(agendamentoList.get(newPosition));
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                agendamentoList.remove(newPosition);
-                notifyItemRemoved(newPosition);
+        holder.btnExcluir.setOnClickListener(v -> {
+            int newPosition = holder.getAdapterPosition();
+            try {
+                new AgendamentoController(context).excluir(agendamentoList.get(newPosition));
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
+            agendamentoList.remove(newPosition);
+            notifyItemRemoved(newPosition);
         });
+
+        holder.btnEditar.setOnClickListener(v -> {
+            int newPosition = holder.getAdapterPosition();
+            Intent it = new Intent(context, ViewAgendamentoEditar.class);
+            it.putExtra("agendamento", (Parcelable) agendamentoList.get(newPosition));
+            it.putExtra("data", agendamentoList.get(newPosition).getData_agendada());
+            it.putExtra("hora", agendamentoList.get(newPosition).getHora_agendada());
+            context.startActivity(it);
+            ((AppCompatActivity) context).finish();
+        });
+
 
     }
 

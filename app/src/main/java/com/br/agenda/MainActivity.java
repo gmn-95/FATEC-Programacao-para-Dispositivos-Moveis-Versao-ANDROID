@@ -26,6 +26,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+/*
+        try {
+            PovoaBanco.criarUsuario(MainActivity.this);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            PovoaBanco.criarAgendamento(MainActivity.this);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }*/
 
     }
 

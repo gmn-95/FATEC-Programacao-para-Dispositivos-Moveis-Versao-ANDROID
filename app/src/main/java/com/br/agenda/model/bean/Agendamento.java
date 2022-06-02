@@ -1,17 +1,25 @@
 package com.br.agenda.model.bean;
 
+import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.renderscript.Element;
+
+import androidx.annotation.RequiresApi;
 
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
 @DatabaseTable(tableName = "agendamento")
-public class Agendamento implements Serializable {
+public class Agendamento implements Serializable, Parcelable {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,11 +29,11 @@ public class Agendamento implements Serializable {
     @DatabaseField(foreign = true, foreignColumnName = "idUsuario", canBeNull = false)
     private Usuario usuario;
 
-    @DatabaseField(dataType = DataType.DATE_STRING, canBeNull = false)
-    private Date data_agendada;
+    @DatabaseField(canBeNull = false)
+    private String data_agendada;
 
-    @DatabaseField(dataType = DataType.DATE_STRING, canBeNull = false)
-    private Date hora_agendada;
+    @DatabaseField(canBeNull = false)
+    private String hora_agendada;
 
     @DatabaseField(columnName = "descricao")
     private String descricao;
@@ -37,7 +45,7 @@ public class Agendamento implements Serializable {
     }
 
 
-    public Agendamento(Integer id, Usuario usuario, Date data_agendada, Date hora_agendada, String descricao, String conteudo) {
+    public Agendamento(Integer id, Usuario usuario, String data_agendada, String hora_agendada, String descricao, String conteudo) {
         this.id = id;
         this.usuario = usuario;
         this.data_agendada = data_agendada;
@@ -46,7 +54,7 @@ public class Agendamento implements Serializable {
         this.conteudo = conteudo;
     }
 
-    public Agendamento(Usuario usuario, Date data_agendada, Date hora_agendada, String descricao, String conteudo) {
+    public Agendamento(Usuario usuario, String data_agendada, String hora_agendada, String descricao, String conteudo) {
         this.usuario = usuario;
         this.data_agendada = data_agendada;
         this.hora_agendada = hora_agendada;
@@ -57,6 +65,29 @@ public class Agendamento implements Serializable {
     public Agendamento(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    protected Agendamento(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readInt();
+        }
+        usuario = in.readParcelable(Usuario.class.getClassLoader());
+        descricao = in.readString();
+        conteudo = in.readString();
+    }
+
+    public static final Creator<Agendamento> CREATOR = new Creator<Agendamento>() {
+        @Override
+        public Agendamento createFromParcel(Parcel in) {
+            return new Agendamento(in);
+        }
+
+        @Override
+        public Agendamento[] newArray(int size) {
+            return new Agendamento[size];
+        }
+    };
 
     public Integer getId() {
         return id;
@@ -74,19 +105,19 @@ public class Agendamento implements Serializable {
         this.usuario = usuario;
     }
 
-    public Date getData_agendada() {
+    public String getData_agendada() {
         return data_agendada;
     }
 
-    public void setData_agendada(Date data_agendada) {
+    public void setData_agendada(String data_agendada) {
         this.data_agendada = data_agendada;
     }
 
-    public Date getHora_agendada() {
+    public String getHora_agendada() {
         return hora_agendada;
     }
 
-    public void setHora_agendada(Date hora_agendada) {
+    public void setHora_agendada(String hora_agendada) {
         this.hora_agendada = hora_agendada;
     }
 
@@ -105,6 +136,8 @@ public class Agendamento implements Serializable {
     public void setConteudo(String conteudo) {
         this.conteudo = conteudo;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -130,4 +163,28 @@ public class Agendamento implements Serializable {
                 ", conteudo='" + conteudo + '\'' +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(id);
+        }
+        dest.writeParcelable(usuario, flags);
+        dest.writeString(descricao);
+        dest.writeString(conteudo);
+        dest.writeString(data_agendada);
+        dest.writeString(hora_agendada);
+
+
+    }
+
 }
