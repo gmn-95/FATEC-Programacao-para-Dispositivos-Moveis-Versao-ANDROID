@@ -11,11 +11,10 @@ import android.widget.Toast;
 
 import com.br.agenda.controller.UsuarioController;
 import com.br.agenda.model.bean.Usuario;
-import com.br.agenda.util.PovoaBanco;
 import com.br.agenda.view.agendamento.ViewAgendamentos;
+import com.br.agenda.view.usuario.ViewUsuarioCadastrar;
 
 import java.sql.SQLException;
-import java.text.ParseException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,10 +41,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void clickBotao(View view){
+    public void cadastrar(View view){
+        Intent intent = new Intent(MainActivity.this, ViewUsuarioCadastrar.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void login(View view){
         try {
             login = (EditText) findViewById(R.id.login);
-            senha = (EditText) findViewById(R.id.senha);
+            senha = (EditText) findViewById(R.id.textInputSenhaCad);
 
             if(login.getText().toString().isEmpty() && senha.getText().toString().isEmpty()){
                 login.setError("Informe o login!");
@@ -71,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }
                 else{
-                    Toast.makeText(this, "Login ou senha inválidos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Login ou senha inválidos", Toast.LENGTH_LONG).show();
                     login.setText("");
                     senha.setText("");
                 }

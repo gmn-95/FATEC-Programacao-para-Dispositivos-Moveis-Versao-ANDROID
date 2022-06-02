@@ -63,8 +63,8 @@ public class ViewAgendamentoCriar extends AppCompatActivity {
 
         txtData = findViewById(R.id.inputEditDate);
         txtHora = findViewById(R.id.inputEditHora);
-        txtConteudo = findViewById(R.id.inputEditConteudo);
-        txtDescricao = findViewById(R.id.inputEditDescricao);
+        txtConteudo = findViewById(R.id.textInputUsuarioCad);
+        txtDescricao = findViewById(R.id.textInputNomeCad);
 
         if(txtData.getText().toString().isEmpty() && txtHora.getText().toString().isEmpty()
                 && txtDescricao.getText().toString().isEmpty() && txtConteudo.getText().toString().isEmpty()){

@@ -13,13 +13,13 @@
         android:layout_height="61dp"
         android:layout_marginTop="108dp"
         android:backgroundTint="#673AB7"
-        android:onClick="clickBotao"
+        android:onClick="login"
         android:text="Entrar"
         android:textColor="#F4F4F4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/senha" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputSenhaCad" />
 
     <EditText
         android:id="@+id/login"
@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textLogin" />
 
     <EditText
-        android:id="@+id/senha"
+        android:id="@+id/textInputSenhaCad"
         android:layout_width="255dp"
         android:layout_height="44dp"
         android:layout_marginTop="20dp"
@@ -71,5 +71,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="255dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#3F51B5"
+        android:onClick="cadastrar"
+        android:text="Cadastre-se"
+        android:textColor="#F4F4F4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btEntrar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
