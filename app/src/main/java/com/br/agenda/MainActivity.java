@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
                 UsuarioController usuarioController = new UsuarioController(MainActivity.this);
                 usuario = usuarioController.validaLogin(usuario);
 
+                System.out.println(usuario);
+
                 if(usuario != null){
                     Intent intent = new Intent(MainActivity.this, ViewAgendamentos.class);
                     intent.putExtra("user", (Parcelable) usuario);

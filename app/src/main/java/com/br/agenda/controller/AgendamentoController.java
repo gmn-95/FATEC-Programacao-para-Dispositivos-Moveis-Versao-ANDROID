@@ -33,8 +33,7 @@ public class AgendamentoController {
 
     public List<Agendamento> listarAgendamentos(Agendamento agendamento) throws SQLException {
         List<Agendamento> agendamentoList = agendamentoDAO.queryForMatching(agendamento);
-
-        return agendamentoList.isEmpty() || agendamentoList == null ? null : agendamentoList;
+        return agendamentoList;
     }
 
 }
