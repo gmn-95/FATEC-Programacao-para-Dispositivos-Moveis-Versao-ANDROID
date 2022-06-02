@@ -70,7 +70,6 @@ public class ViewAgendamentos extends AppCompatActivity {
         Intent intent = new Intent(ViewAgendamentos.this, ViewAgendamentoCriar.class);
         intent.putExtra("user", (Parcelable) usuario);
         startActivity(intent);
-        finish();
     }
 
     public void editarConta(View view){

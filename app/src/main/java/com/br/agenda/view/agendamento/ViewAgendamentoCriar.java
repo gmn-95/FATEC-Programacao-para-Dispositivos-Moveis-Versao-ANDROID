@@ -59,7 +59,7 @@ public class ViewAgendamentoCriar extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void criarAgendamento(View view) throws ParseException, SQLException {
+    public void criarAgendamento(View view) throws SQLException {
 
         txtData = findViewById(R.id.inputEditDate);
         txtHora = findViewById(R.id.inputEditHora);

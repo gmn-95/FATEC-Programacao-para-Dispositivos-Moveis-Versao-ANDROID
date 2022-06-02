@@ -46,7 +46,6 @@ public class Agendamento implements Serializable, Parcelable {
     public Agendamento() {
     }
 
-
     public Agendamento(Integer id, Usuario usuario, String data_agendada, String hora_agendada, String descricao, String conteudo) {
         this.id = id;
         this.usuario = usuario;
@@ -138,7 +137,6 @@ public class Agendamento implements Serializable, Parcelable {
     public void setConteudo(String conteudo) {
         this.conteudo = conteudo;
     }
-
 
     @Override
     public boolean equals(Object o) {

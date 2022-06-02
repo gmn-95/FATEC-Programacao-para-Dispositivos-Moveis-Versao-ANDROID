@@ -33,7 +33,6 @@ public class AgendamentoController {
         DeleteBuilder<Agendamento, Integer> deleteBuilder = agendamentoDAO.deleteBuilder();
         deleteBuilder.where().eq("usuario_idusuario", usuario.getId());
         deleteBuilder.delete();
-
     }
 
     public void excluirPorId(Integer id) throws SQLException{

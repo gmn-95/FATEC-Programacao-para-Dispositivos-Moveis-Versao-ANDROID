@@ -34,7 +34,7 @@ public class ViewUsuarioCadastrar extends AppCompatActivity {
             @Override
             public void handleOnBackPressed() {
                 Intent intent = new Intent(ViewUsuarioCadastrar.this, MainActivity.class);
-                startActivity(intent);
+                setResult(0, intent);
                 finish();
             }
         };

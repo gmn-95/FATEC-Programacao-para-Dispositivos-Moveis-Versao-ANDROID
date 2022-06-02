@@ -2,7 +2,6 @@ package com.br.agenda.controller;
 
 import android.content.Context;
 
-import com.br.agenda.model.bean.Agendamento;
 import com.br.agenda.model.bean.Usuario;
 import com.br.agenda.model.dao.UsuarioDAO;
 import com.br.agenda.util.DBHelper;
@@ -34,13 +33,10 @@ public class UsuarioController {
 
     public void atualiza(Usuario usuario) throws SQLException{
         usuarioDAO.update(usuario);
-        System.out.println(usuario);
     }
 
     public Usuario validaLogin(Usuario usuarioBucado) throws SQLException {
         List<Usuario> usuarioList = usuarioDAO.queryForMatching(usuarioBucado);
         return usuarioList.isEmpty() || usuarioList == null ? null : usuarioList.get(0);
     }
-
-
 }

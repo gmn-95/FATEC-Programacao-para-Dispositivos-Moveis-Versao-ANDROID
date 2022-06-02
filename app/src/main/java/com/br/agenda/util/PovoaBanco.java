@@ -27,5 +27,4 @@ public class PovoaBanco {
         AgendamentoController agendamentoController = new AgendamentoController(context);
         agendamentoController.inserir(agendamento);
     }
-
 }

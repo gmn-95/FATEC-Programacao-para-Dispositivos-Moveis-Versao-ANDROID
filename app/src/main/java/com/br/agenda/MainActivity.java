@@ -9,17 +9,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.br.agenda.controller.AgendamentoController;
 import com.br.agenda.controller.UsuarioController;
-import com.br.agenda.model.bean.Agendamento;
 import com.br.agenda.model.bean.Usuario;
-import com.br.agenda.util.PovoaBanco;
 import com.br.agenda.view.agendamento.ViewAgendamentos;
 import com.br.agenda.view.usuario.ViewUsuarioCadastrar;
 
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,28 +26,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-
-        /*try {
-            PovoaBanco.criarUsuario(MainActivity.this);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            PovoaBanco.criarAgendamento(MainActivity.this);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }*/
-
     }
 
     public void cadastrar(View view){
         Intent intent = new Intent(MainActivity.this, ViewUsuarioCadastrar.class);
         startActivity(intent);
-        finish();
     }
 
     public void login(View view){
@@ -79,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, ViewAgendamentos.class);
                     intent.putExtra("user", (Parcelable) usuario);
                     startActivity(intent);
-                    finish();
+
                 }
                 else{
                     Toast.makeText(this, "Login ou senha inválidos", Toast.LENGTH_LONG).show();
