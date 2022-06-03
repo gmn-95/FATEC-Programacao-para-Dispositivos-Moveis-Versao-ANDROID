@@ -1,8 +1,10 @@
 package com.br.agenda.view.usuario;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -75,22 +77,31 @@ public class ViewUsuarioEditarConta extends AppCompatActivity {
     }
 
     public void excluirConta(View view){
-        try {
-            AgendamentoController agendamentoController = new AgendamentoController(ViewUsuarioEditarConta.this);
-            usuarioController = new UsuarioController(ViewUsuarioEditarConta.this);
 
-            agendamentoController.excluirPorUsuario(usuario);
-            usuarioController.excluir(usuario);
+        new AlertDialog.Builder(ViewUsuarioEditarConta.this)
+                .setTitle("Excluindo conta")
+                .setMessage("Tem certeza que deseja excluir?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
+                            AgendamentoController agendamentoController = new AgendamentoController(ViewUsuarioEditarConta.this);
+                            usuarioController = new UsuarioController(ViewUsuarioEditarConta.this);
 
-            Toast.makeText(this, "Conta excluída com sucesso!", Toast.LENGTH_LONG)
-                    .show();
+                            agendamentoController.excluirPorUsuario(usuario);
+                            usuarioController.excluir(usuario);
 
-            Intent intent = new Intent(ViewUsuarioEditarConta.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+                            Toast.makeText(ViewUsuarioEditarConta.this, "Conta excluída com sucesso!", Toast.LENGTH_LONG)
+                                    .show();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+                            Intent intent = new Intent(ViewUsuarioEditarConta.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).setNegativeButton("Não", null).show();
     }
 }

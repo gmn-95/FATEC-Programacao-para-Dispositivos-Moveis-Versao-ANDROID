@@ -79,7 +79,7 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoViewHold
             int newPosition = holder.getAdapterPosition();
 
             new AlertDialog.Builder(context)
-                    .setTitle("Excluíndo agendamento")
+                    .setTitle("Excluindo agendamento")
                     .setMessage("Tem certeza que deseja excluir?")
                     .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                         @Override

@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 else{
-                    Toast.makeText(this, "Login ou senha inválidos", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Usuário ou senha inválidos", Toast.LENGTH_LONG).show();
                     login.setText("");
                     senha.setText("");
                 }
