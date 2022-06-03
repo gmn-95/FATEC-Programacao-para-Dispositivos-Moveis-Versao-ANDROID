@@ -10,6 +10,11 @@ import com.br.agenda.model.bean.Usuario;
 import java.sql.SQLException;
 import java.text.ParseException;
 
+
+/*
+* Chamar PovoaBanco em onCreate na MainActivity
+*
+* */
 public class PovoaBanco {
 
     public static void criarUsuario(Context context) throws SQLException {

@@ -81,7 +81,8 @@ public class ViewAgendamentoEditar extends AppCompatActivity {
         txtDescricao = findViewById(R.id.textInputNomeCad);
 
         if(txtData.getText().toString().isEmpty() && txtHora.getText().toString().isEmpty()
-                && txtDescricao.getText().toString().isEmpty() && txtConteudo.getText().toString().isEmpty()){
+                && txtDescricao.getText().toString().isEmpty()
+                && txtConteudo.getText().toString().isEmpty()){
 
             txtData.setError("Informe a Data!");
             txtHora.setError("Informe a Hora!");

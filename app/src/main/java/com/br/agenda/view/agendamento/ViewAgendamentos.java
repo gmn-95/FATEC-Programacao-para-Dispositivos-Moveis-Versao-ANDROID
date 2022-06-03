@@ -91,6 +91,7 @@ public class ViewAgendamentos extends AppCompatActivity {
             agendamentoList = agendamentoController.listarAgendamentos(agendamento);
 
             agendamentoAdapter = new AgendamentoAdapter(ViewAgendamentos.this, agendamentoList);
+
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ViewAgendamentos.this,
                     LinearLayoutManager.VERTICAL, false);
 

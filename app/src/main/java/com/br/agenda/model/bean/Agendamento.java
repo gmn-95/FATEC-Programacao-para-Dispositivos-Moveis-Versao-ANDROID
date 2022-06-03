@@ -1,21 +1,12 @@
 package com.br.agenda.model.bean;
 
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.renderscript.Element;
 
-import androidx.annotation.RequiresApi;
-
-import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Objects;
 
 @DatabaseTable(tableName = "agendamento")

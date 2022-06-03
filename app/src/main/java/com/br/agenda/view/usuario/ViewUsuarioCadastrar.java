@@ -6,18 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.br.agenda.MainActivity;
 import com.br.agenda.R;
-import com.br.agenda.controller.AgendamentoController;
 import com.br.agenda.controller.UsuarioController;
 import com.br.agenda.model.bean.Usuario;
-import com.br.agenda.view.agendamento.ViewAgendamentoCriar;
-import com.br.agenda.view.agendamento.ViewAgendamentos;
 
 import java.sql.SQLException;
 

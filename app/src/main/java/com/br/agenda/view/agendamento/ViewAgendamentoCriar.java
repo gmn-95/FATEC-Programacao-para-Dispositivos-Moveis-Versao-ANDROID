@@ -17,7 +17,6 @@ import com.br.agenda.model.bean.Usuario;
 import com.br.agenda.util.MaskEditUtil;
 
 import java.sql.SQLException;
-import java.text.ParseException;
 
 public class ViewAgendamentoCriar extends AppCompatActivity {
 
@@ -90,9 +89,12 @@ public class ViewAgendamentoCriar extends AppCompatActivity {
 
             usuario = getIntent().getParcelableExtra("user");
 
-            agendamento = new Agendamento(usuario, txtData.getText().toString(),
-                    txtHora.getText().toString(), txtDescricao.getText().toString(),
-                    txtConteudo.getText().toString());
+            agendamento = new Agendamento(
+                        usuario, txtData.getText().toString(),
+                        txtHora.getText().toString(),
+                        txtDescricao.getText().toString(),
+                        txtConteudo.getText().toString()
+                    );
 
             agendamentoController = new AgendamentoController(ViewAgendamentoCriar.this);
             agendamentoController.inserir(agendamento);
