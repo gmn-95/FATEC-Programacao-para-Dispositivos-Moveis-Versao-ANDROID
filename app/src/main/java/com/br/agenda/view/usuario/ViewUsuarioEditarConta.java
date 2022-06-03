@@ -59,20 +59,39 @@ public class ViewUsuarioEditarConta extends AppCompatActivity {
     public void editarConta(View view){
 
         try {
-            Usuario usu = new Usuario(usuario.getId(), nome.getText().toString(), login.getText().toString(), senha.getText().toString());
-            usuarioController = new UsuarioController(ViewUsuarioEditarConta.this);
-            usuarioController.atualiza(usu);
 
-            Toast.makeText(this, "Usuário editado com sucesso!", Toast.LENGTH_LONG)
-                    .show();
+            if(login.getText().toString().isEmpty() && senha.getText().toString().isEmpty()){
+                login.setError("Informe o usuário!");
+                senha.setError("Informe a senha!");
+            }
+            else if(login.getText().toString().isEmpty()){
+                login.setError("Informe o usuário");
+            }
+            else if(senha.getText().toString().isEmpty()){
+                senha.setError("Informe a senha!");
+            }
+            else{
+                Usuario usu = new Usuario(usuario.getId(), nome.getText().toString(), login.getText().toString(), senha.getText().toString());
+                usuarioController = new UsuarioController(ViewUsuarioEditarConta.this);
+                usuarioController.atualiza(usu);
 
-            Intent intent = new Intent(ViewUsuarioEditarConta.this, ViewAgendamentos.class);
-            intent.putExtra("user", (Parcelable) usu);
-            startActivity(intent);
-            finish();
+                Toast.makeText(this, "Usuário editado com sucesso!", Toast.LENGTH_LONG)
+                        .show();
+
+                Intent intent = new Intent(ViewUsuarioEditarConta.this, ViewAgendamentos.class);
+                intent.putExtra("user", (Parcelable) usu);
+                startActivity(intent);
+                finish();
+            }
+
         }
         catch (SQLException e){
-            e.printStackTrace();
+            new AlertDialog.Builder(ViewUsuarioEditarConta.this)
+                    .setTitle("Usuário existente!")
+                    .setMessage("Usuário já existe!")
+                    .setNeutralButton("OK", null).show();
+
+            login.setText("");
         }
     }
 

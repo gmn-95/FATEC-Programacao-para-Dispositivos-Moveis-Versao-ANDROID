@@ -39,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
             senha = (EditText) findViewById(R.id.textInputSenhaCad);
 
             if(login.getText().toString().isEmpty() && senha.getText().toString().isEmpty()){
-                login.setError("Informe o login!");
+                login.setError("Informe o usuário!");
                 senha.setError("Informe a senha!");
             }
             else if(login.getText().toString().isEmpty()){
-                login.setError("Informe o login");
+                login.setError("Informe o usuário");
             }
             else if(senha.getText().toString().isEmpty()){
                 senha.setError("Informe a senha!");
